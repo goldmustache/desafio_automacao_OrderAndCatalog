@@ -9,12 +9,14 @@
     "test:ui": "playwright test --config=playwright.ui.config.ts --project=ui",
     "typecheck": "tsc --noEmit",
     "report": "playwright show-report",
-      "build": "tsc"
+    "build": "tsc",
+    "test:run": "vitest run"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
     "@types/node": "^22.0.0",
     "dotenv": "^16.4.7",
-    "typescript": "^5.9.0"
+    "typescript": "^5.9.0",
+    "vitest": "^5.0.3"
   }
 }
