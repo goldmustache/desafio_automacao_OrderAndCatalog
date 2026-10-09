@@ -1,0 +1,21 @@
+name: Executar automação
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # todo dia às 12:00 UTC (9:00 em Brasília)
+  workflow_dispatch:        # permite rodar manualmente pelo GitHub
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: node dist/index.js
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
